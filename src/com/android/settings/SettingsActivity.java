@@ -226,6 +226,8 @@ public class SettingsActivity extends SettingsDrawerActivity
 
     private static final int REQUEST_SUGGESTION = 42;
 
+    private static final String AC_FRAGMENT = "com.android.settings.AllianceControl";
+
     private String mFragmentClass;
 
     private CharSequence mInitialTitle;
@@ -1013,6 +1015,16 @@ public class SettingsActivity extends SettingsDrawerActivity
      */
     private Fragment switchToFragment(String fragmentName, Bundle args, boolean validate,
             boolean addToBackStack, int titleResId, CharSequence title, boolean withTransition) {
+	if (AC_FRAGMENT.equals(fragmentName)) {
+            Intent acIntent = new Intent();
+            acIntent.setClassName("com.allianceteam.alliancecontrolaosp", "com.allianceteam.alliancecontrolaosp.activities.HomeActivity");
+            startActivity(acIntent);
+            finish();
+            return null;
+	    
+	}
+	
+
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
                     + fragmentName);
@@ -1102,6 +1114,17 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.DevelopmentSettingsActivity.class.getName()),
                 showDev, isAdmin, pm);
+
+        // AllianceControl
+        boolean acSupported = false;
+        try {
+            acSupported = (getPackageManager().getPackageInfo("com.allianceteam.alliancecontrolaosp", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.AllianceControlActivity.class.getName()),
+                acSupported, isAdmin, pm);
+  
 
         // Reveal development-only quick settings tiles
         DevelopmentTiles.setTilesEnabled(this, showDev);
