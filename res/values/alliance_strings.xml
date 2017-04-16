@@ -27,5 +27,9 @@
 
         <!-- Magisk Manager -->
         <string name="magisk_title">Magisk Manager</string>
+   
+        <!-- Alliance version -->
+        <string name="alliance_version">Alliance version</string>
+        <string name="alliance_version_default">Unknown</string>
 
 </resources>
