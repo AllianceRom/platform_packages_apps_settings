@@ -231,7 +231,9 @@ public class SettingsActivity extends SettingsDrawerActivity
     private static final String SUPERSU_FRAGMENT = "com.android.settings.SuperSU";
 
     private static final String PHH_FRAGMENT = "com.android.settings.Phh";
-          
+
+    private static final String MAGISK_FRAGMENT = "com.android.settings.MagiskManager";
+
     private String mFragmentClass;
 
     private CharSequence mInitialTitle;
@@ -1045,6 +1047,15 @@ public class SettingsActivity extends SettingsDrawerActivity
             return null;
         }
 
+        if (MAGISK_FRAGMENT.equals(fragmentName)) {
+            Intent magiskIntent = new Intent();
+            magiskIntent.setClassName("com.topjohnwu.magisk", "com.topjohnwu.magisk.SplashActivity");
+            startActivity(magiskIntent);
+            finish();
+            return null;
+	    
+        }
+
         if (validate && !isValidFragment(fragmentName)) {
             throw new IllegalArgumentException("Invalid fragment for this activity: "
                     + fragmentName);
@@ -1164,6 +1175,16 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.PhhActivity.class.getName()),
                 phhSupported, isAdmin, pm);
+
+        // Magisk Manager
+        boolean magiskSupported = false;
+        try {
+            magiskSupported = (getPackageManager().getPackageInfo("com.topjohnwu.magisk", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.MagiskActivity.class.getName()),
+                magiskSupported, isAdmin, pm);
 
         // Reveal development-only quick settings tiles
         DevelopmentTiles.setTilesEnabled(this, showDev);

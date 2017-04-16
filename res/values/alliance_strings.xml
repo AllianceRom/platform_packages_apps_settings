@@ -24,5 +24,8 @@
 
         <!-- Phh Superuser -->
         <string name="phh_title">Phh Superuser</string>
-   
+
+        <!-- Magisk Manager -->
+        <string name="magisk_title">Magisk Manager</string>
+
 </resources>

@@ -72,6 +72,7 @@ public class Settings extends SettingsActivity {
     public static class AllianceControlActivity extends SettingsActivity { /* empty */ }
     public static class SuperSUActivity extends SettingsActivity { /* empty */ }
     public static class PhhActivity extends SettingsActivity { /* empty */ }
+    public static class MagiskActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilitySettingsActivity extends SettingsActivity { /* empty */ }
     public static class CaptioningSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilityInversionSettingsActivity extends SettingsActivity { /* empty */ }
