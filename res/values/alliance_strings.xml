@@ -16,6 +16,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
        
         <!-- Alliance Control -->
-	<string name="ac_settings_header">Alliance</string>    
+	<string name="ac_settings_header">Custom</string>    
 	<string name="ac_settings_title">Alliance Control</string>    
 </resources>
